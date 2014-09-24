@@ -9,5 +9,6 @@ command -nargs=* GJumpMerge call s:gitjump("merge", <f-args>)
 command -nargs=* GJumpGrep call s:gitjump("grep", <f-args>)
 
 function! s:gitjump(mode, ...)
+  echo join(a:000, ' ')
   cexpr system('git jump ' . a:mode . join(a:000, ' '))
 endfunction
