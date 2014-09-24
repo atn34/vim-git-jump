@@ -4,8 +4,6 @@ else
   let g:loaded_git_jump = 1
 endif
 
-command -complete=customlist,ListGitJumpModes -nargs=* GJump cexpr system('git jump diff master')
-
-fun ListGitJumpModes(A,L,P)
-  return ["diff", "merge", "grep"]
-endfun
+command -nargs=* GJumpDiff cexpr system("git jump diff " . <args>)
+command -nargs=* GJumpMerge cexpr system("git jump merge " . <args>)
+command -nargs=* GJumpGrep cexpr system("git jump grep " . <args>)
