@@ -4,4 +4,4 @@ else
   let g:loaded_git_jump = 1
 endif
 
-command! -nargs=* echo swag
+command! -nargs=* Gjump echo <nargs>
