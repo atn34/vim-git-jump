@@ -10,8 +10,6 @@ The <mode> parameter is one of:
 diff: elements are diff hunks. Arguments are given to diff.
 
 merge: elements are merge conflicts. Arguments are ignored.
-
-grep: elements are grep hits. Arguments are given to grep.
 EOF
 }
 
@@ -37,17 +35,6 @@ mode_merge() {
 	while IFS= read fn; do
 		grep -Hn '^<<<<<<<' "$fn"
 	done
-}
-
-# Grep -n generates nice quickfix-looking lines by itself,
-# but let's clean up extra whitespace, so they look better if the
-# editor shows them to us in the status bar.
-mode_grep() {
-	git grep -n "$@" |
-	perl -pe '
-	s/[ \t]+/ /g;
-	s/^ *//;
-	'
 }
 
 if test $# -lt 1; then
